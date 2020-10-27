@@ -1,4 +1,4 @@
 class User < ApplicationRecord
     has_many :events
-    validates :username, presense: true
+    validates :username, presence: true
 end
