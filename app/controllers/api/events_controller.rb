@@ -11,9 +11,9 @@ module Api
         end
 
         def create
-            event = Event.new(event_params)
-            
-            if answer.save
+            event = Event.new(notes:params[:event][:notes])
+
+            if event.save
                 render json: {status: 'SUCCESS', message:'Saved event', data: event},status: :ok
             else
                 render json: {status: 'ERROR', message:'Event not saved',
@@ -42,7 +42,8 @@ module Api
         private
 
         def event_params
-            params.permit(:notes, :user_id)
+            
+            params.permit(:notes)
         end
     end
 end
